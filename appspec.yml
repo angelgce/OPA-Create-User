@@ -3,8 +3,8 @@ Resources:
   - myLambdaFunction:
       Type: AWS::Lambda::Function
       Properties:
-        Name: "create-user"
-        Alias: "create-user-Alias"
+        Name: "Create-User"
+        Alias: "Create-User-Alias"
         CurrentVersion: "1"
         TargetVersion: "2"
 Hooks:
