@@ -10,5 +10,6 @@ phases:
       - echo Build completed successfully
 artifacts:
   files:
+    - appspec.yml
     - target/create-user-1.0.0-aws.jar
   discard-paths: yes
