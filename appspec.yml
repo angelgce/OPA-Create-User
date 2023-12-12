@@ -1,9 +1,14 @@
-Description: Lambda Example
+version: 0.0
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  Function:
-    Type: AWS::Serverless::Function
-    Properties:
-      AutoPublishAlias: live
-      Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequestorg.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
-      Timeout: 120
+  - myLambdaFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        Name: "myLambdaFunction"
+        Alias: "myLambdaFunctionAlias"
+        CurrentVersion: "1"
+        TargetVersion: "2"
+        Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequestorg.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+Hooks:
+  - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
+  - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"
