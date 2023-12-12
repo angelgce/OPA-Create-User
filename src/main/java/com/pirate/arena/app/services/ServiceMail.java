@@ -45,7 +45,7 @@ public class ServiceMail {
                             .withSubject(new Content()
                                     .withCharset("UTF-8").withData("Welcome "
                                             .concat(user.username()
-                                                    .concat(" to One Piece-Arena!!!")))))
+                                                    .concat(" to One Piece Arena!!!")))))
                     .withSource("no-replay@onepiece-arena.com");
             client.sendEmail(request);
             System.out.println("Email sent!");
