@@ -8,7 +8,6 @@ Resources:
         Alias: "myLambdaFunctionAlias"
         CurrentVersion: "1"
         TargetVersion: "2"
-        Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequestorg.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
 Hooks:
   - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
   - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"
