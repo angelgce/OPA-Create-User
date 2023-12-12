@@ -1,9 +1,9 @@
-version: 0.0
+Description: Lambda Example
+Transform: AWS::Serverless-2016-10-31
 Resources:
-  - myLambdaFunction:
-      Type: AWS::Lambda::Function
-      Properties:
-        Name: "Create-User"
-        Alias: "Create-User-Alias"
-        CurrentVersion: "1"
-        TargetVersion: "2"
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      AutoPublishAlias: live
+      Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequestorg.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+      Timeout: 120
