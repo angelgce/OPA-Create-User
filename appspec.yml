@@ -4,7 +4,6 @@ Resources:
       Type: AWS::Lambda::Function
       Properties:
         Name: "OPA-CreateUser"
-        Alias: "myLambdaFunctionAlias"
         CurrentVersion: "1"
         TargetVersion: "2"
 Hooks:
