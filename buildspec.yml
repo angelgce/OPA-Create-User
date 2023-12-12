@@ -8,7 +8,7 @@ phases:
   post_build:
     commands:
       - echo Build MAVEN completed successfully
-      - aws lambda update-function-code --function-name Create-User --zip-file target/create-user-1.0.0-aws.jar
+      - aws lambda update-function-code --function-name Create-User --jar-file target/create-user-1.0.0-aws.jar
       - echo Build LAMBDA completed successfully
 artifacts:
   files:
