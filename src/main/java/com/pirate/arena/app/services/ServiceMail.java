@@ -22,7 +22,7 @@ public class ServiceMail {
     private final ServiceCreateCode serviceCreateCode;
 
     private String getHTMLBody() {
-        StringBuilder body = new StringBuilder("<html><body><div style=\"justify-content: center; width: 95%\"><h1 style=\"text-transform: uppercase; text-align: center\"><img src=\"https://onepice-arena-resources.s3.amazonaws.com/website/icon.png\"style=\"width: 40px;  margin-right: 10px;\" />Welcome to One Piece-Arena</h1><p style=\"text-align: center\">Yor validation code is:</p><div style=\"text-align: center; margin-bottom: 20px;\">");
+        StringBuilder body = new StringBuilder("<html><body><div style=\"justify-content: center; width: 95%\"><h1 style=\"text-transform: uppercase; text-align: center\"><img src=\"https://onepice-arena-resources.s3.amazonaws.com/website/icon.png\"style=\"width: 40px;  margin-right: 10px;\" />Welcome to <br> One Piece-Arena</h1><p style=\"text-align: center\">Yor validation code is:</p><div style=\"text-align: center; margin-bottom: 20px;\">");
         for (String number : serviceCreateCode.getCode().split("")) {
             body.append("<span style=\"font-size: 30px; padding: 9px; border: 1px solid black; text-align: center; margin: 1px; border-radius: 5px; background-color: rgba(209, 212, 212, 0.207);\">" + number + "</span>");
         }
