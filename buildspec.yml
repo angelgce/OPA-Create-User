@@ -7,9 +7,10 @@ phases:
       - mvn clean package
   post_build:
     commands:
-      - echo Build completed successfully
+      - echo Build MAVEN completed successfully
+      - aws lambda update-function-code --function-name Create-User --zip-file fileb://deployment_package.zip
+      - echo Build LAMBDA completed successfully
 artifacts:
   files:
-    - appspec.yml
     - target/create-user-1.0.0-aws.jar
   discard-paths: yes
