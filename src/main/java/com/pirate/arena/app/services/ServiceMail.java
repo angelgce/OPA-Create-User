@@ -1,5 +1,6 @@
 package com.pirate.arena.app.services;
 
+import com.amazonaws.services.dynamodbv2.model.InternalServerErrorException;
 import com.pirate.arena.app.exceptions.BadRequestException;
 import com.pirate.arena.app.models.Request;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class ServiceMail {
         return body.toString();
     }
 
-    public String sendWelcomeMail(Request user, String code) {
+    public void sendWelcomeMail(Request user, String code) {
         validateInputs(user);
         try {
             AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard()
@@ -47,11 +48,9 @@ public class ServiceMail {
                                                     .concat(" to One Piece Arena!!!")))))
                     .withSource("no-replay@onepiece-arena.com");
             client.sendEmail(request);
-            System.out.println("Email sent!");
-            return "Email sent!";
         } catch (Exception ex) {
             ex.printStackTrace();
-            return "Error " + ex.getMessage();
+            throw new InternalServerErrorException("Error: " + ex.getMessage());
         }
     }
 

@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
+import com.amazonaws.services.dynamodbv2.model.InternalServerErrorException;
 import com.pirate.arena.app.exceptions.BadRequestException;
 import com.pirate.arena.app.models.Request;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,7 @@ public class ServiceCreateUser {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         Table table = dynamoDB.getTable("users");
         String code = serviceCreateCode.getCode();
+        serviceMail.sendWelcomeMail(request, code);
         table.putItem(new Item()
                 .withPrimaryKey("email", request.email())
                 .withString("username", request.username())
@@ -39,7 +41,7 @@ public class ServiceCreateUser {
                 .with("creationDate", LocalDateTime.now().toString())
                 .withBoolean("verified", false)
         );
-        serviceMail.sendWelcomeMail(request, code);
+
         return request.username().concat(" created successfully");
     }
 
