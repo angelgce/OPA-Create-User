@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class BadRequestException  extends RuntimeException{
     public BadRequestException(String message) {
         super(message);
-        log.warn("BadRequestException: " + message);
+        log.warn(message);
     }
 }
